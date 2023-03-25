@@ -1,7 +1,52 @@
 import Link from "next/link"
 import { FaYoutube, FaGithub, FaTwitter, FaLinkedin, FaInstagram, FaFacebook, FaPinterest, FaReddit } from "react-icons/fa"
 
-export default function Navbar() {
+//dynamic social media links
+const socialMedia = [
+    {
+        name: "Youtube",
+        url: "https://www.youtube.com/channel/UC5yZzdTXg3TX4oFhzI2ritQ",
+        icon: <FaYoutube />
+    },
+    {
+        name: "Github",
+        url: "https://github.com/valiantlynx",
+        icon: <FaGithub />
+    },
+    {
+        name: "Twitter",
+        url: "https://twitter.com/Valiantlynxz",
+        icon: <FaTwitter />
+    },
+    {
+        name: "Linkedin",
+        url: "https://www.linkedin.com/in/valiant-lynx-b3773224a/",
+        icon: <FaLinkedin />
+    },
+    {
+        name: "Instagram",
+        url: "https://www.instagram.com/valiant_lynx/",
+        icon: <FaInstagram />
+    },
+    {
+        name: "Facebook",
+        url: "https://www.facebook.com/profile.php?id=100087843852647",
+        icon: <FaFacebook />
+    },
+    {
+        name: "Pinterest",
+        url: "https://www.pinterest.com/valiantlynx/",
+        icon: <FaPinterest />
+    },
+    {
+        name: "Reddit",
+        url: "https://www.reddit.com/user/animevariant",
+        icon: <FaReddit />
+    }    
+]
+
+
+export default function Navbar( ) {
     return (
         <nav className="bg-slate-600 p-4 sticky top-0 drop-shadow-xl z-10">
             <div className="prose prose-xl mx-auto flex justify-between flex-col sm:flex-row">
@@ -9,31 +54,11 @@ export default function Navbar() {
                     <Link href="/" className="text-white/90 no-underline hover:text-white">Valiantlynx</Link>
                 </h1>
                 <div className="flex flex-row justify-center sm:justify-evenly align-middle gap-4 text-white text-4xl lg:text-5xl">
-                    <Link className="text-white/90 no-underline hover:text-white" href="https://www.youtube.com/channel/UCowp4JkKtviDPKEejXcn1-g" >
-                        <FaYoutube />
-                    </Link>
-                    <Link className="text-white/90 no-underline hover:text-white" href="https://github.com/valiantlynx" >
-                        <FaGithub />
-                    </Link>
-                    <Link className="text-white/90 no-underline hover:text-white" href="https://twitter.com/Valiantlynx" >
-                        <FaTwitter />
-                    </Link>
-                    <Link className="text-white/90 no-underline hover:text-white" href="https://www.linkedin.com/in/valiantlynx/" >
-                        <FaLinkedin />
-                    </Link>
-                    <Link className="text-white/90 no-underline hover:text-white" href="https://www.instagram.com/valiantlynx/" >
-                        <FaInstagram />
-                    </Link>
-                    <Link className="text-white/90 no-underline hover:text-white" href="https://www.facebook.com/valiantlynx" >
-                        <FaFacebook />
-                    </Link>
-                    <Link className="text-white/90 no-underline hover:text-white" href="https://www.pinterest.com/valiantlynx/" >
-                        <FaPinterest />
-                    </Link>
-                    <Link className="text-white/90 no-underline hover:text-white" href="https://www.reddit.com/user/valiantlynx" >
-                        <FaReddit />
-                    </Link>
-                   
+                    {socialMedia.map((social) => (
+                        <Link href={social.url} key={social.name} className="text-white/90 no-underline hover:text-white" target="_blank">
+                            {social.icon}
+                        </Link>
+                    ))}
                 </div>
             </div>
         </nav>
