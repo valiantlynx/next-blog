@@ -1,6 +1,7 @@
 import './globals.css'
 import Navbar from './components/Navbar'
 import MyProfilePic from './components/MyProfilePic'
+import Search from './components/Search'
 
 export const metadata = {
   title: 'Valiantlynx Blog',
@@ -18,6 +19,7 @@ export default function RootLayout({
 
         <Navbar />
         <MyProfilePic />
+        <Search/>
         {children}
         </body>
     </html>

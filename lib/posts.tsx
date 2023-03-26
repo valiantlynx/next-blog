@@ -39,6 +39,7 @@ export function getSortedPostsData() {
 
 }
 
+
 // get one post by id
 export async function getPostData(id: string) {
     const fullPath = path.join(postsDirectory, `${id}.md`)

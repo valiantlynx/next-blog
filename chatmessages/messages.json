@@ -1,0 +1,44 @@
+[
+    {
+        "id": "Engineering",
+        "title": "Chat 1",
+        "date": "2021-01-01",
+        "owner": "user1",
+        "contentHtml": "Chat bitch content"
+    },
+    {
+        "id": "32",
+        "title": "Chat 2",
+        "date": "2021-01-02",
+        "owner": "anderson",
+        "contentHtml": "anderson is a man of many talents and he is a great friend to have around"
+    },
+    {
+        "id": "3",
+        "title": "Chat 3",
+        "date": "2021-01-03",
+        "owner": "user3",
+        "contentHtml": "Chat 3 is not content"
+    },
+    {
+        "id": "34",
+        "title": "Chat 1",
+        "date": "2021-01-01",
+        "owner": "user1",
+        "contentHtml": "Chat 1 content"
+    },
+    {
+        "id": "21",
+        "title": "Chat 2",
+        "date": "2021-01-02",
+        "owner": "anderson",
+        "contentHtml": "anderson is a man of many tallents and he is a great friend to have around"
+    },
+    {
+        "id": "13",
+        "title": "Chat 3",
+        "date": "2021-01-03",
+        "owner": "user3",
+        "contentHtml": "Chat 3 is content"
+    }
+]

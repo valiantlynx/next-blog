@@ -2,6 +2,7 @@ import { getSortedPostsData, getPostData } from "@/lib/posts"
 import {notFound} from "next/navigation"
 import getFormattedDate from "@/lib/getFormattedDate"
 import Link from "next/link"
+import Chats from "@/app/components/chatcomponents/Chats"
 
 //turn the ssr to ssg
 export function generateStaticParams() {
@@ -48,6 +49,7 @@ export default async function Post({params}: {params: {postId: string}}) {
         <p className="mt-0">{formattedDate}</p>
         <article>
             <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            <Chats />
             <p>
                 <Link href="/" > 🏡 Back to home 🏠 </Link>
             </p>
