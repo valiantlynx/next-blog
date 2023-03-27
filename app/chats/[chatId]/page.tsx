@@ -25,8 +25,11 @@ export async function generateMetadata({params}: {params: {chatId: string}}) {
         }
     }
 
+    const {title, date, contentHtml} = await getChatData(chatId)
+
     return {
-        title: chat.title,
+        title: "Chat: " + title + " | " + getFormattedDate(date) + " | " + "Valiantlynx.com Chat App",
+        description: contentHtml,
     }
 }
 

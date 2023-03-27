@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dqbd/tiktoken": "^1.0.2",
+    "@huggingface/inference": "^1.6.0",
     "@types/node": "18.15.9",
     "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
+    "cohere-ai": "^5.1.0",
+    "dotenv": "^16.0.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "gray-matter": "^4.0.3",
@@ -22,6 +26,7 @@
     "react-icons": "^4.8.0",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
+    "serpapi": "^1.1.1",
     "typescript": "5.0.2"
   },
   "devDependencies": {

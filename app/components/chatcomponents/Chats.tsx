@@ -4,9 +4,14 @@ import ChatItem from "./ChatItem"
 import ChatNav from "./ChatNav"
 import ChatInput from "./ChatInput"
 import styles from "./chat.module.css"
+import { type } from "os"
+
+type Props = {
+    response: string
+}
 
 
-export default async function Chats() {
+export default async function Chats({response}: Props) {
     // no need to await, cause we have the data in the server, its get the data right away
     const chats = await getSortedChatsData()
 
@@ -19,7 +24,9 @@ export default async function Chats() {
                 {chats.map((chat: any) => (
                     //console.log("testchat", chat),
                     <ChatItem key={chat.id} chat={chat} />
+                    
                 ))}
+                {response}
             </div>
             <ChatInput />
         </div>

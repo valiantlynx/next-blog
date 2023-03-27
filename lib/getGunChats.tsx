@@ -1,4 +1,3 @@
-import Gun from 'gun';
 import path from 'path'
 import fs from 'fs';
 
