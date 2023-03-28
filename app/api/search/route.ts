@@ -2,7 +2,6 @@
 import { getSortedPostsData } from "@/lib/posts";
 import { NextResponse } from "next/server";
 
-
 export async function GET(request: Request) {
   const posts = getSortedPostsData()
 
@@ -17,7 +16,7 @@ export async function GET(request: Request) {
   console.log("query", query)
 
   //check if the query is empty, if it is return no posts with that name were found
-  if (query == null || !query || query=="" || query==undefined )  {
+  if (query == null || !query || query == "" || query == undefined) {
     //if it is empty return no posts with that name were found
     const noPosts = [{
       title: "No posts found",
@@ -32,10 +31,6 @@ export async function GET(request: Request) {
   const filteredPosts = await posts.filter((post) =>
     post.title.toLowerCase().includes(query.toLowerCase())
   );
- 
+
   return NextResponse.json({ filteredPosts });
-
-
-
-
 }

@@ -4,7 +4,6 @@ import ChatItem from "./ChatItem"
 import ChatNav from "./ChatNav"
 import ChatInput from "./ChatInput"
 import styles from "./chat.module.css"
-import { type } from "os"
 
 type Props = {
     response: string

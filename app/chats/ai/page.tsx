@@ -1,25 +1,13 @@
-import { OpenAI } from 'langchain/llms';
-
-// import dotenv from 'dotenv';
-import dotenv from 'dotenv';
-import Chats from '@/app/components/chatcomponents/Chats';
-
-dotenv.config();
-
-const openaiApiKey = process.env.OPENAI_API_KEY;
-const openai = new OpenAI({ openAIApiKey: openaiApiKey });
+import { OpenAI } from "langchain";
+import { initializeAgentExecutor, ZapierToolKit } from "langchain/agents";
+import { ZapierNLAWrapper } from "langchain/tools";
 
 export default async function page() {
-    async function sendMessageToOpenAI(message: string): Promise<string> {
-        const res = await openai.call(message);
-        return res;
-    }
-    const message = 'Hello, how are you?';
-    const response = await sendMessageToOpenAI(message);
-    console.log(response);
-    return (
-        <div>
-            <Chats response={response} />            
-            </div>
-    )
-}
+  
+  return (
+    <div>
+        <h1>Page</h1>
+      
+    </div>
+  )
+}; 

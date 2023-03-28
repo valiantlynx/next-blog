@@ -5,8 +5,6 @@ import Link from "next/link"
 import Chats from "@/app/components/chatcomponents/Chats"
 import ShareButton from "@/app/components/shareComponents/ShareButton"
 
-
-
 //turn the ssr to ssg
 export function generateStaticParams() {
     const posts = getSortedPostsData() // deduped
