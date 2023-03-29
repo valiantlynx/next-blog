@@ -31,8 +31,9 @@ export const useZapierWithLangchain = async ({ title, contentHtml, requestInput 
     console.log("Loaded agent.");
 
     const emails = ["gormerywanjiru@gmail.com", "meliodas5770@gmail.com", "gormerykombo@gmail.com", "valiantlynxz@gmail.com"];
+    const twitter = ["@valiantlynxz"];
 
-    const input = `Summarize this text "${contentHtml}" and email it to the emails ${emails},body: the summarized text, subject: ${requestInput}. if any error happens retry 3 times.`;
+    const input = `Summarize this text: "${contentHtml}". Afterwards ${requestInput}.if there is some input missing just guess. if any error happens retry up to 3 times.`;
   
     console.log(`Executing with input "${input}"...`);
   
