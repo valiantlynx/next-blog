@@ -6,10 +6,11 @@ type Props = {
     postId: string,
     title: string,
     date: string,
-    contentHtml: string
+    contentHtml: string,
+    requestInput: string
 }
 
-export const useZapierWithLangchain = async ({ title, contentHtml }: Props) => {
+export const useZapierWithLangchain = async ({ title, contentHtml, requestInput }: Props) => {
 
    
     const model = new OpenAI({ temperature: 0 });
@@ -31,13 +32,13 @@ export const useZapierWithLangchain = async ({ title, contentHtml }: Props) => {
 
     const emails = ["gormerywanjiru@gmail.com", "meliodas5770@gmail.com", "gormerykombo@gmail.com", "valiantlynxz@gmail.com"];
 
-    const input = `Summarize this text "${contentHtml}" and email it to the emails ${emails}, with the subject being ${title}.`;
+    const input = `Summarize this text "${contentHtml}" and email it to the emails ${emails},body: the summarized text, subject: ${requestInput}. if any error happens retry 3 times.`;
   
     console.log(`Executing with input "${input}"...`);
   
     const result = await executor.call({ input });
   
-    console.log(`Got output ${result.output}`);
+    console.log(`Got output: ${result.output}`);
     
     return result.output;
 };

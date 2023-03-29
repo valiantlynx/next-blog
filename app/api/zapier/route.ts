@@ -10,9 +10,13 @@ export async function GET(request: Request) {
 
     // use the search query to filter the posts
     const { searchParams } = new URL(request.url);
+    console.log("searchParams", searchParams)
 
     const postId = searchParams.get("postId");
     console.log("postId", postId)
+
+    const requestInput: any = searchParams.get("requestInput");
+    console.log("requestInput", requestInput)
 
     if (postId == null || !postId || postId == "" || postId == undefined) {
         //if it is empty return no posts with that name were found
@@ -24,20 +28,17 @@ export async function GET(request: Request) {
 
         return NextResponse.json({ filteredPosts })
     } else {
+
         const filteredPosts = await getPostData(postId)
+
         console.log("filteredPosts", filteredPosts.date)
+        
         const { title, date, contentHtml } = filteredPosts
 
-        const result = await useZapierWithLangchain({ postId, title: title, date: date, contentHtml: contentHtml })
+        const result = await useZapierWithLangchain({ postId, title: title, date: date, contentHtml: contentHtml,  requestInput })
 
         // console.log("result: ", result)
 
         return NextResponse.json({ filteredPosts })
     }
 }
-
-// // this will recieve some data from frontend and call a function to send it to zapier
-// import { useZapierWithLangchain } from "@/lib/useZapierWithLangchain"
-// import { NextResponse } from "next/server";
-
-
