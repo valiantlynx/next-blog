@@ -50,8 +50,9 @@ export default async function Post({ params }: { params: { postId: string } }) {
             <p className="mt-0">{formattedDate}</p>
             <article>
                 <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
-                <ShareButton postId={postId} />
-                <Chats />
+              {/* they both send an error  */}
+                {/* <ShareButton postId={postId} />
+                <Chats /> */}
                 <p>
                     <Link href="/" > 🏡 Back to home 🏠 </Link>
                 </p>

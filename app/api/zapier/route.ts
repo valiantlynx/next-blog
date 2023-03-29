@@ -12,33 +12,33 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     console.log("searchParams", searchParams)
 
-    const postId = searchParams.get("postId");
+    const postId: any = searchParams.get("postId");
+
     console.log("postId", postId)
 
     const requestInput: any = searchParams.get("requestInput");
     console.log("requestInput", requestInput)
 
-    if (postId == null || !postId || postId == "" || postId == undefined) {
-        //if it is empty return no posts with that name were found
-        const filteredPosts = [{
-            title: "No posts found",
-            date: "2021-01-01",
-            id: "no-posts-found",
-        }]
+    const filteredPosts = await getPostData(postId)
 
-        return NextResponse.json({ filteredPosts })
-    } else {
+    console.log("filteredPosts", filteredPosts.date)
 
-        const filteredPosts = await getPostData(postId)
+    const { title, date, contentHtml } = filteredPosts
 
-        console.log("filteredPosts", filteredPosts.date)
-        
-        const { title, date, contentHtml } = filteredPosts
+    const result = await useZapierWithLangchain({ postId, title: title, date: date, contentHtml: contentHtml, requestInput })
 
-        const result = await useZapierWithLangchain({ postId, title: title, date: date, contentHtml: contentHtml,  requestInput })
+    // console.log("result: ", result)
 
-        // console.log("result: ", result)
+    return NextResponse.json({ result })
 
-        return NextResponse.json({ filteredPosts })
-    }
+    // if (postId == null || !postId || postId == "" || postId == undefined) {
+    //     //if it is empty return no posts with that name were found
+    //     const filteredPosts = [{
+    //         title: "No posts found",
+    //         date: "2021-01-01",
+    //         id: "no-posts-found",
+    //     }]
+
+    //     return NextResponse.json({ filteredPosts })
+    // }
 }
