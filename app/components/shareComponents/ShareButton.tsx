@@ -47,19 +47,16 @@ const socialMedia = [
         icon: <FaReddit />
     }
 ]
-
 type Props = {
     postId: string
 }
 
-export default async function ShareButton({ postId }: Props) {
+export default function ShareButton({ postId }: Props) {
     const posts = getSortedPostsData() // deduped
 
     if (!posts.find((post) => post.id === postId)) {
         return notFound()
     }
-
-
 
     return (
         <div className="flex flex-col justify-center items-center">
@@ -67,7 +64,6 @@ export default async function ShareButton({ postId }: Props) {
                 {socialMedia.map((social) => (
                     <Link
                         href={`/chats/ai/${postId}`}
-                        
                         key={social.name}
                         className="h-[35px] w-[35px] flex flex-col justify-center items-center shadow-[-7px_-7px_20px_0px_#fff9,-4px_-4px_5px_0px_#fff9,7px_7px_20px_0px_#0002,4px_4px_5px_0px_#0001,inset_0px_0px_0px_0px_#fff9,inset_0px_0px_0px_0px_#0001,inset_0px_0px_0px_0px_#fff9,inset_0px_0px_0px_0px_#0001] transition-shadow duration-[0.6s] ease-[cubic-bezier(.79,0.21,0.06,0.81)] text-base text-[rgba(42,52,84,1)] no-underline rounded-[3px] active:shadow-[4px_4px_6px_0_rgba(255,255,255,0.5),-4px_-4px_6px_0_rgba(116,125,136,0.2),inset_-4px_-4px_6px_0_rgba(255,255,255,0.5),inset_4px_4px_6px_0_rgba(116,125,136,0.3)]; background: #e0e5ec;
                 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

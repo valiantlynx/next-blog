@@ -5,7 +5,7 @@ import Link from "next/link"
 import Chats from "@/app/components/chatcomponents/Chats"
 import ShareButton from "@/app/components/shareComponents/ShareButton"
 
-//turn the ssr to ssg
+//turn this ssr to ssg 
 export function generateStaticParams() {
     const posts = getSortedPostsData() // deduped
 
@@ -51,8 +51,8 @@ export default async function Post({ params }: { params: { postId: string } }) {
             <article>
                 <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
               {/* they both send an error  */}
-                {/* <ShareButton postId={postId} />
-                <Chats /> */}
+                <ShareButton postId={postId} />
+                <Chats />
                 <p>
                     <Link href="/" > 🏡 Back to home 🏠 </Link>
                 </p>

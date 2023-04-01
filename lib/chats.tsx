@@ -34,6 +34,7 @@ export async function getSortedChatsData() {
             title: chat.title,
             date: chat.date,
             owner: chat.owner,
+            contentHtml: chat.contentHtml,
         }
 
         return blogChat
