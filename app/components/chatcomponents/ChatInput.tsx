@@ -21,8 +21,8 @@ export default function ChatInput() {
                 console.log("data from chatinput.tsx: ", data.result)
 
                 const pocketbaseData = {
-                    text: data.result,
-                    user: pb.authStore.model?.id,
+                    text: newMessage + data.result,
+                    user: "valiantlynx_ai1",
                 };
 
                 const createdMessageAi = await pb.collection('messages').create(pocketbaseData);
