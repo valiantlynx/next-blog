@@ -70,12 +70,26 @@ export default function Chats() {
         const fetchData = async () => {
             try {
 
-                // Get initial messages
+                // current tine in 2023-01-01 00:00:00 format
+                const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+                // fetch a paginated records list with a filter for the newest records between now and one hour ago
+
+                const oneHourAgo = new Date(new Date().getTime() - 60 * 60 * 1000)
+                // an hour ago in 2023-01-01 00:00:00 format
+                const oneHourAgoString = oneHourAgo.toISOString().slice(0, 19).replace('T', ' ');
+
+                console.log("oneHourAgoString: ", oneHourAgoString)
+
+                console.log("now: ", now)
+
+                // fetch a paginated records list
                 const resultList = await pb.collection('messages').getList(1, 50, {
+                    // filter for the newest records
+                    filter: `created >= '${oneHourAgoString}' && created <= '${now}'`,
                     sort: 'created',
                     expand: 'user',
                 });
-
 
                 //console.log("resultList: ", resultList.items)
                 setMessages(resultList.items as unknown as Message[]);
