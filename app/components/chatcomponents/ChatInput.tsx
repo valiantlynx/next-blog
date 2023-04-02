@@ -3,20 +3,55 @@ import { useState } from 'react'
 
 export default function ChatInput() {
     const [newMessage, setNewMessage] = useState<string>('');
+    const [chatInput, setChatInput] = useState<string>('');
+
+    const handleAI = async (createdMessage: string) => {
+        // api call to chatai here
+        console.log("chatInput being sent to chataiEndpoint: ", createdMessage)
+        const chataiEndpoint = (chatInput: string) => `http://localhost:3000/api/chatai?chatInput=${chatInput}`;
+
+        console.log("chataiEndpoint: ", chataiEndpoint(chatInput))
+
+        //send the chatInput to the chataiEndpoint api to get the chatOutput
+        fetch(chataiEndpoint(chatInput)).then((res) => {
+                //console.log("res: ", res)
+                return res.json();
+            })
+            .then(async (data) => {
+                console.log("data from chatinput.tsx: ", data.result)
+
+                const pocketbaseData = {
+                    text: data.result,
+                    user: pb.authStore.model?.id,
+                };
+
+                const createdMessageAi = await pb.collection('messages').create(pocketbaseData);
+                console.log("createdMessageAi: ", createdMessageAi.text)
+                return data.result;
+            })
+    }
+
+
     const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log("newMessage: ", newMessage)
+       
         try {
-
             const data = {
                 text: newMessage,
                 user: pb.authStore.model?.id,
-              };
+            };
             const createdMessage = await pb.collection('messages').create(data);
+            console.log("createdMessage: ", createdMessage.text)
+            handleAI(createdMessage.text);
+
             setNewMessage('');
+
         } catch (err) {
             console.error(err);
         }
     };
+
     return (
         <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
             <form onSubmit={sendMessage} className="relative flex">
@@ -27,7 +62,10 @@ export default function ChatInput() {
                         </svg>
                     </button>
                 </span>
-                <input type="text" placeholder="Write your message!" className="form-input w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 bg-gray-200 rounded-md py-3 pl-12" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} />
+                <input type="text" placeholder="Write your message!" className="form-input w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 bg-gray-200 rounded-md py-3 pl-12" value={newMessage} onChange={(e) => {
+                    setNewMessage(e.target.value);
+                    setChatInput(e.target.value);
+                }} />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                     <button type="button" className="btn btn-ghost btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

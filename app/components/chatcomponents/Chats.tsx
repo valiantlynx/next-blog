@@ -1,4 +1,3 @@
-
 "use client"
 import { useState, useEffect } from 'react';
 import { pb } from '@/lib/pocketbase/pb'
@@ -7,7 +6,6 @@ import ChatInput from "./ChatInput"
 import styles from "./chat.module.css"
 import Link from "next/link"
 import Image from "next/image"
-
 
 export default function Chats() {
     const [newMessage, setNewMessage] = useState<string>('');
@@ -26,10 +24,10 @@ export default function Chats() {
                 });
 
 
-                console.log("resultList: ", resultList.items)
+                //console.log("resultList: ", resultList.items)
                 setMessages(resultList.items as unknown as Message[]);
 
-                console.log("messages: ", messages)
+                //console.log("messages: ", messages)
 
                 // Subscribe to realtime messages
                 unsubscribe = await pb
@@ -63,7 +61,7 @@ export default function Chats() {
     const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            console.log("newMessage id: ", pb.authStore.model?.id)
+            //console.log("newMessage id: ", pb.authStore.model?.id)
             const data = {
                 text: newMessage,
                 user: pb.authStore.model?.id,
@@ -87,7 +85,7 @@ export default function Chats() {
                 ${styles['scrollbar-w-2']} scrolling-touch`}>
 
                     {messages.map((message) => {
-                        console.log("message1: ", message)
+                        //console.log("message1: ", message)
                         return (
                             message.expand?.user?.id !== pb.authStore.model?.id ? (
                                 <div className="chat chat-start" key={message.id}>

@@ -12,7 +12,6 @@ type Props = {
 
 export const useZapierWithLangchain = async ({ title, contentHtml, requestInput }: Props) => {
 
-   
     const model = new OpenAI({ temperature: 0 });
     const zapier = new ZapierNLAWrapper();
     const toolkit = await ZapierToolKit.fromZapierNLAWrapper(zapier);
