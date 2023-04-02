@@ -1,38 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Nest.js Blog
+This is a blog built with Nest.js that allows you to write and publish blog posts in Markdown format. It also includes user authentication, a working chat function, and integration with PocketBase, which is used to store all the data for the blog.
 
-## Getting Started
+## Getting started
+To run this blog, you'll need to have Docker and Docker Compose installed on your machine.
 
-First, run the development server:
+Clone this repository to your local machine.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Navigate to the root directory of the project in your terminal.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run docker-compose up to start the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open your web browser and go to http://localhost:3000 to view the app.
+the backend admin ui is at http://localhost:8080/_/
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Writing a blog post
+To write a blog post, follow these steps:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Create a new Markdown file in the blogposts directory. The name of the file will be used as the URL for the blog post.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Add your blog post content in Markdown format to the file.
 
-## Learn More
+Add a title attribute to the top of the file to give your blog post a title.
 
-To learn more about Next.js, take a look at the following resources:
+Add any other metadata attributes you want to the top of the file, such as author, date, or tags.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Save the file and commit it to the repository.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Your blog post will now be available at http://localhost:3000/posts/<filename>.
 
-## Deploy on Vercel
+## User authentication
+This blog includes user authentication using Passport.js. To log in, click the "Log in" button in the navigation bar and enter your credentials. To log out, click the "Log out" button.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Chat function
+This blog includes a working chat function that allows users to chat with each other in real-time. To use the chat function, click the "Chat" button in the navigation bar. You can enter a message in the chat box and hit enter to send it. Other users will be able to see your message and respond.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## PocketBase integration
+This blog uses PocketBase to store all the data for the blog, including blog posts, user information, and chat messages. The PocketBase executable is included in the pocketbase directory of the repository, and is started automatically when you run docker-compose up.
+
+## Styling
+This blog uses Tailwind CSS and DaisyUI for styling. To customize the styling, you can edit the CSS files in the public directory.
+
+## Gun.js integration
+In the future, this blog may include integration with Gun.js for decentralized data storage. There are currently some files related to Gun.js in the repository, but they are deactivated.
+
+That's it! Enjoy using our Nest.js blog. If you have any questions or feedback, please let us know.
