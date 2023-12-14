@@ -47,8 +47,8 @@ That's it! Enjoy using our Nest.js blog. If you have any questions or feedback, 
 
 ### adding new projects with their own git history
 ```sh
-git subtree add --prefix=apps/next-blog https://github.com/valiantlynx/next-blog.git master --squash
-git subtree pull --prefix=apps/next-blog https://github.com/valiantlynx/next-blog.git master --squash
-git subtree push --prefix=apps/next-blog https://github.com/valiantlynx/next-blog.git master
+git subtree add --prefix=apps/next-blog https://github.com/valiantlynx/next-blog.git main --squash
+git subtree pull --prefix=apps/next-blog https://github.com/valiantlynx/next-blog.git main --squash
+git subtree push --prefix=apps/next-blog https://github.com/valiantlynx/next-blog.git main
 
 ```
