@@ -44,3 +44,11 @@ This blog uses Tailwind CSS and DaisyUI for styling. To customize the styling, y
 In the future, this blog may include integration with Gun.js for decentralized data storage. There are currently some files related to Gun.js in the repository, but they are deactivated.
 
 That's it! Enjoy using our Nest.js blog. If you have any questions or feedback, please let us know.
+
+### adding new projects with their own git history
+```sh
+git subtree add --prefix=apps/next-blog https://github.com/valiantlynx/next-blog.git master --squash
+git subtree pull --prefix=apps/next-blog https://github.com/valiantlynx/next-blog.git master --squash
+git subtree push --prefix=apps/next-blog https://github.com/valiantlynx/next-blog.git master
+
+```
